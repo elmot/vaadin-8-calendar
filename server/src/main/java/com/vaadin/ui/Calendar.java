@@ -50,7 +50,6 @@ import com.vaadin.ui.components.calendar.CalendarComponentEvents.WeekClick;
 import com.vaadin.ui.components.calendar.CalendarComponentEvents.WeekClickHandler;
 import com.vaadin.ui.components.calendar.CalendarDateRange;
 import com.vaadin.ui.components.calendar.CalendarTargetDetails;
-import com.vaadin.ui.components.calendar.ContainerEventProvider;
 import com.vaadin.ui.components.calendar.event.BasicEventProvider;
 import com.vaadin.ui.components.calendar.event.CalendarEditableEventProvider;
 import com.vaadin.ui.components.calendar.event.CalendarEvent;
@@ -110,7 +109,6 @@ import java.util.logging.Logger;
  * @since 7.1
  * @author Vaadin Ltd.
  *
- * @deprecated As of 8.0, no replacement available.
  */
 @SuppressWarnings("serial")
 public class Calendar extends AbstractComponent
@@ -1538,94 +1536,6 @@ public class Calendar extends AbstractComponent
         td.setHasDropTime(clientVariables.containsKey("dropSlotIndex"));
 
         return td;
-    }
-
-    /**
-     * Sets a container as a data source for the events in the calendar.
-     * Equivalent for doing
-     * <code>Calendar.setEventProvider(new ContainerEventProvider(container))</code>
-     *
-     * Use this method if you are adding a container which uses the default
-     * property ids like {@link BeanItemContainer} for instance. If you are
-     * using custom properties instead use
-     * {@link Calendar#setContainerDataSource(Container.Indexed, Object, Object, Object, Object, Object)}
-     *
-     * Please note that the container must be sorted by date!
-     *
-     * @param container
-     *            The container to use as a datasource
-     */
-    public void setContainerDataSource(Container.Indexed container) {
-        ContainerEventProvider provider = new ContainerEventProvider(container);
-        provider.addEventSetChangeListener(
-                new CalendarEventProvider.EventSetChangeListener() {
-                    @Override
-                    public void eventSetChange(
-                            EventSetChangeEvent changeEvent) {
-                        // Repaint if events change
-                        markAsDirty();
-                    }
-                });
-        provider.addEventChangeListener(new EventChangeListener() {
-            @Override
-            public void eventChange(EventChangeEvent changeEvent) {
-                // Repaint if event changes
-                markAsDirty();
-            }
-        });
-        setEventProvider(provider);
-    }
-
-    /**
-     * Sets a container as a data source for the events in the calendar.
-     * Equivalent for doing
-     * <code>Calendar.setEventProvider(new ContainerEventProvider(container))</code>
-     *
-     * Please note that the container must be sorted by date!
-     *
-     * @param container
-     *            The container to use as a data source
-     * @param captionProperty
-     *            The property that has the caption, null if no caption property
-     *            is present
-     * @param descriptionProperty
-     *            The property that has the description, null if no description
-     *            property is present
-     * @param startDateProperty
-     *            The property that has the starting date
-     * @param endDateProperty
-     *            The property that has the ending date
-     * @param styleNameProperty
-     *            The property that has the stylename, null if no stylname
-     *            property is present
-     */
-    public void setContainerDataSource(Container.Indexed container,
-            Object captionProperty, Object descriptionProperty,
-            Object startDateProperty, Object endDateProperty,
-            Object styleNameProperty) {
-        ContainerEventProvider provider = new ContainerEventProvider(container);
-        provider.setCaptionProperty(captionProperty);
-        provider.setDescriptionProperty(descriptionProperty);
-        provider.setStartDateProperty(startDateProperty);
-        provider.setEndDateProperty(endDateProperty);
-        provider.setStyleNameProperty(styleNameProperty);
-        provider.addEventSetChangeListener(
-                new CalendarEventProvider.EventSetChangeListener() {
-                    @Override
-                    public void eventSetChange(
-                            EventSetChangeEvent changeEvent) {
-                        // Repaint if events change
-                        markAsDirty();
-                    }
-                });
-        provider.addEventChangeListener(new EventChangeListener() {
-            @Override
-            public void eventChange(EventChangeEvent changeEvent) {
-                // Repaint if event changes
-                markAsDirty();
-            }
-        });
-        setEventProvider(provider);
     }
 
     @Override

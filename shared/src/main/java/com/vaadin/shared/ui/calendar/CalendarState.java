@@ -15,7 +15,7 @@
  */
 package com.vaadin.shared.ui.calendar;
 
-import com.vaadin.shared.AbstractComponentState;
+import com.vaadin.shared.AbstractFieldState;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import java.util.List;
  * @since 7.1.0
  * @author Vaadin Ltd.
  */
-public class CalendarState extends AbstractComponentState {
+public class CalendarState extends AbstractFieldState {
 
     public boolean format24H;
     public String[] dayNames;
