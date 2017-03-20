@@ -50,7 +50,6 @@ public interface CalendarComponentEvents extends Serializable {
     /**
      * Notifier interface for event drag & drops.
      */
-    @Deprecated
     public interface EventMoveNotifier extends CalendarEventNotifier {
 
         /**
@@ -67,7 +66,6 @@ public interface CalendarComponentEvents extends Serializable {
      * MoveEvent is sent when existing event is dragged to a new position.
      */
     @SuppressWarnings("serial")
-    @Deprecated
     public class MoveEvent extends CalendarComponentEvent {
 
         public static final String EVENT_ID = CalendarEventId.EVENTMOVE;
@@ -119,7 +117,6 @@ public interface CalendarComponentEvents extends Serializable {
      * Handler interface for when events are being dragged on the calendar
      *
      */
-    @Deprecated
     public interface EventMoveHandler extends EventListener, Serializable {
 
         /** Trigger method for the MoveEvent. */
@@ -140,7 +137,6 @@ public interface CalendarComponentEvents extends Serializable {
     /**
      * Handler interface for day or time cell drag-marking with mouse.
      */
-    @Deprecated
     public interface RangeSelectNotifier
             extends Serializable, CalendarEventNotifier {
 
@@ -158,7 +154,6 @@ public interface CalendarComponentEvents extends Serializable {
      * mouse.
      */
     @SuppressWarnings("serial")
-    @Deprecated
     public class RangeSelectEvent extends CalendarComponentEvent {
 
         public static final String EVENT_ID = CalendarEventId.RANGESELECT;
@@ -246,7 +241,6 @@ public interface CalendarComponentEvents extends Serializable {
     }
 
     /** Notifier interface for navigation listening. */
-    @Deprecated
     public interface NavigationNotifier extends Serializable {
         /**
          * Add a forward navigation listener.
@@ -596,7 +590,6 @@ public interface CalendarComponentEvents extends Serializable {
     /**
      * Notifier interface for event resizing.
      */
-    @Deprecated
     public interface EventResizeNotifier extends Serializable {
 
         /**
@@ -611,7 +604,6 @@ public interface CalendarComponentEvents extends Serializable {
     /**
      * Handler for EventResize event.
      */
-    @Deprecated
     public interface EventResizeHandler extends EventListener, Serializable {
 
         /** Trigger method for the EventResize. */

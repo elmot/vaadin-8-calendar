@@ -54,6 +54,7 @@ import com.vaadin.client.DateTimeService;
 import com.vaadin.client.VConsole;
 import com.vaadin.client.WidgetUtil;
 import com.vaadin.shared.ui.datefield.DateTimeResolution;
+import com.vaadin.shared.ui.nativeselect.NativeSelectState;
 import com.vaadin.shared.util.SharedUtil;
 
 import java.util.Date;
@@ -1059,8 +1060,6 @@ public class VCalendarPanel extends FocusableFlexTable implements
      *
      * @param sender
      *            The component that was clicked
-     * @param updateVariable
-     *            Should the value field be updated
      *
      */
     private void processClickEvent(Widget sender) {
@@ -1675,7 +1674,7 @@ public class VCalendarPanel extends FocusableFlexTable implements
 
         private ListBox createListBox() {
             ListBox lb = new ListBox();
-            lb.setStyleName(VNativeSelect.CLASSNAME);
+            lb.setStyleName(NativeSelectState.STYLE_NAME);
             lb.addChangeHandler(this);
             lb.addBlurHandler(VCalendarPanel.this);
             lb.addFocusHandler(VCalendarPanel.this);
@@ -1685,8 +1684,6 @@ public class VCalendarPanel extends FocusableFlexTable implements
         /**
          * Constructs the ListBoxes and updates their value
          *
-         * @param redraw
-         *            Should new instances of the listboxes be created
          */
         private void buildTime() {
             clear();
@@ -2234,7 +2231,7 @@ public class VCalendarPanel extends FocusableFlexTable implements
      * and it depends on the current resolution, what is considered inside the
      * range.
      *
-     * @param startDate
+     * @param newRangeStart
      *            - the allowed range's start date
      */
     public void setRangeStart(Date newRangeStart) {
@@ -2253,7 +2250,7 @@ public class VCalendarPanel extends FocusableFlexTable implements
      * Sets the end range for this component. The end range is inclusive, and it
      * depends on the current resolution, what is considered inside the range.
      *
-     * @param endDate
+     * @param newRangeEnd
      *            - the allowed range's end date
      */
     public void setRangeEnd(Date newRangeEnd) {

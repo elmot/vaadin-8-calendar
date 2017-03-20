@@ -80,7 +80,6 @@ public interface CalendarEventProvider extends Serializable {
     /**
      * Listener for EventSetChange events.
      */
-    @Deprecated
     public interface EventSetChangeListener extends Serializable {
 
         /**
